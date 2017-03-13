@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import store from '../shared/stores/dataStore';
-import Carousel from './handlers/carousel';
+import Carousel from '../shared/handlers/carousel';
 import { Provider } from 'mobx-react';
 
 // import styles

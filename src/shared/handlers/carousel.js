@@ -18,7 +18,7 @@ export default class Metadata extends React.Component {
   }
 
   componentWillMount() {
-    dataActions.populateMetaData();
+    dataActions.getCycles();
   }
 
   componentDidMount() {
