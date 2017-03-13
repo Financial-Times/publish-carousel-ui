@@ -15,7 +15,6 @@ class DataStore {
   }
 
   getCycles() {
-     console.log(cyclesData)
     return (process.env.NODE_ENV === 'test') ? cyclesData : this.cycles;
   }
 }

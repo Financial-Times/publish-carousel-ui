@@ -16,6 +16,7 @@ export default observer(({cycle}) => {
               <li>Errors: {cycle.metadata.errors}</li>
               <li>Completed: {cycle.metadata.completed}</li>
               <li>Total: {cycle.metadata.total}</li>
+              <li>Iteration: {cycle.metadata.iteration}</li>
               <li>Current UUID: {cycle.metadata.currentUuid}</li>
               <li>Type: {cycle.type}</li>
            </ul>

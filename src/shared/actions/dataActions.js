@@ -2,16 +2,14 @@ import {action} from 'mobx';
 import dataStore from '../stores/dataStore';
 import request from 'superagent';
 
-const CAROUSEL_API_URL = process.env.CAROUSEL_API_URL;
-
 class DataActions {
-  constructor() {}
+   constructor() {}
 
    @action getCycles() {
      dataStore.loading = true;
 
      request
-         .get(`${CAROUSEL_API_URL}/cycles`)
+         .get(`/cycles`)
          .end(function(err, res) {
            dataStore.loading = false;
            if (err || !res.ok) {
@@ -24,7 +22,7 @@ class DataActions {
 
    @action stopCycle(id) {
      request
-      .post(`${CAROUSEL_API_URL}/cycles/${id}/stop`)
+      .post(`/cycles/${id}/stop`)
       .end(function(err, res) {
         if (err || !res.ok) {
           dataStore.alert = 'Failed to stop cycle! Please check if the carousel is running, and try again.';
@@ -34,7 +32,7 @@ class DataActions {
 
    @action resetCycle(id) {
      request
-      .post(`${CAROUSEL_API_URL}/cycles/${id}/reset`)
+      .post(`/cycles/${id}/reset`)
       .end(function(err, res) {
         if (err || !res.ok) {
           dataStore.alert = 'Failed to reset cycle! Please check if the carousel is running, and try again.';
@@ -44,7 +42,7 @@ class DataActions {
 
    @action resumeCycle(id) {
      request
-      .post(`${CAROUSEL_API_URL}/cycles/${id}/resume`)
+      .post(`/cycles/${id}/resume`)
       .end(function(err, res) {
         if (err || !res.ok) {
           dataStore.alert = 'Failed to resume cycle! Please check if the carousel is running, and try again.';
@@ -54,7 +52,7 @@ class DataActions {
 
    @action shutdownCarousel() {
      request
-      .post(`${CAROUSEL_API_URL}/scheduler/shutdown`)
+      .post(`/scheduler/shutdown`)
       .end(function(err, res) {
         if (err || !res.ok) {
           dataStore.alert = 'Failed to shutdown carousel! Please check if the carousel is running, and try again.';
@@ -64,7 +62,7 @@ class DataActions {
 
    @action startCarousel() {
      request
-      .post(`${CAROUSEL_API_URL}/scheduler/start`)
+      .post(`/scheduler/start`)
       .end(function(err, res) {
         if (err || !res.ok) {
           dataStore.alert = 'Failed to start carousel! Please check if the carousel is running, and try again.';
