@@ -47,7 +47,11 @@ module.exports = {
             use: [
               { loader: 'css-loader' },
               { loader: 'postcss-loader' },
-              { loader: 'sass-loader', options: {} }
+              { loader: 'sass-loader', options: {
+                includePaths: [
+                  'node_modules/bulma'
+                ]
+              } }
             ]
           })
         },
