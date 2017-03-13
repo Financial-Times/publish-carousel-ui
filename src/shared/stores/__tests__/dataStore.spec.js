@@ -14,14 +14,16 @@ describe('Data Store', () => {
   });
 
   it('Should return the initial data store', () => {
-    const data = dataStore.retrieveResults();
-    expect(data).toEqual({});
+    const data = dataStore.getCycles();
+    expect(data).toHaveLength(0);
   });
 
   it('Should return the updated data store', () => {
-    const mockData = {foo:'bar'}
-    dataStore.data = mockData
-    const data = dataStore.retrieveResults();
-    expect(data).toEqual(mockData);
+    const mockData = [{foo:'bar'}]
+    dataStore.cycles = mockData
+    const data = dataStore.getCycles();
+
+    expect(data).toHaveLength(1);
+    expect(data[0]).toEqual({'foo':'bar'});
   });
 });
