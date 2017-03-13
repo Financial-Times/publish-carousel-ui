@@ -9,7 +9,7 @@
     "coverage": "jest --coverage",
     "postinstall": "npm run build",
     "production": "babel-node server.js",
-    "start": "webpack -d && webpack-dev-server --content-base _build/ --inline --hot --history-api-fallback",
+    "start": "webpack-dev-server --inline --hot",
     "test": "npm run unit && npm run functional",
     "unit": "NODE_ENV=unit jest --config .jest --runInBand --no-cache",
     "unit-watch": "NODE_ENV=unit jest --no-cache --config .jest --watch",

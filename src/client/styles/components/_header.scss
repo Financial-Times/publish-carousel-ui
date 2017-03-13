@@ -22,7 +22,11 @@
 // }
 
 .headroom-wrapper {
-  height: 2em;
   background-color: black;
   color: white;
+
+  h1 {
+    font-size: 2em;
+    padding: .5em;
+  }
 }
