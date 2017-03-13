@@ -9,7 +9,7 @@
     "coverage": "jest --coverage",
     "postinstall": "npm run build",
     "production": "babel-node server.js",
-    "start": "webpack-dev-server --inline --hot",
+    "start": "webpack-dev-server --port 9000 --inline --hot",
     "test": "npm run unit && npm run functional",
     "unit": "NODE_ENV=unit jest --config .jest --runInBand --no-cache",
     "unit-watch": "NODE_ENV=unit jest --no-cache --config .jest --watch",
@@ -36,7 +36,12 @@
   "devDependencies": {
     "babel-eslint": "^6.1.2",
     "eslint": "^3.16.0",
-    "eslint-plugin-react": "^6.10.0"
+    "eslint-plugin-react": "^6.10.0",
+    "faker": "^4.1.0",
+    "lodash": "^4.17.4",
+    "meow": "^3.7.0",
+    "superagent-throttle": "^0.2.1",
+    "uuid": "^3.0.1"
   },
   "dependencies": {
     "babel-cli": "^6.18.0",

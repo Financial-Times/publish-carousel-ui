@@ -9,6 +9,7 @@ import dataStore from '../stores/dataStore';
 
 import Header from '../components/header';
 import Collection from '../components/collection';
+import Button from '../components/button';
 
 @observer
 export default class Carousel extends React.Component {
@@ -43,13 +44,41 @@ export default class Carousel extends React.Component {
           <Header title="" />
           <div className="content">
             {collections.map(collection =>
-               <div key={collection}>
-                  <h1>{collection}</h1>
-                  <Collection cycles={cycles[collection]} />
-               </div>
+              <div
+                className="card"
+                key={collection}
+              >
+                <header className="card-header">
+                  <p className="card-header-title">
+                    {collection}
+                  </p>
+                </header>
+                <div className="card-content">
+                  <div className="content">
+                    <Collection cycles={cycles[collection]} />
+                  </div>
+                </div>
+                <footer className="card-footer">
+                  <Button
+                    className={["card-footer-item"]}
+                    type="pause"
+                    cycle={cycles[collection]}
+                    all
+                  >
+                    Pause all&nbsp;{collection}
+                  </Button>
+                  <Button
+                    className={["card-footer-item"]}
+                    type="stop"
+                    cycle={cycles[collection]}
+                    all
+                  >
+                    Stop all&nbsp;{collection}
+                  </Button>
+                </footer>
+              </div>
             )}
           </div>
-        </main>
-    )
+        </main>)
   }
 }
