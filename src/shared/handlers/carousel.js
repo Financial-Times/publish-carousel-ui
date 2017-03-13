@@ -1,7 +1,8 @@
 import React from "react";
-import moment from "moment";
+
+import _ from 'lodash';
+
 import {observer} from 'mobx-react';
-import {observable} from "mobx";
 
 import dataActions from '../actions/dataActions';
 import dataStore from '../stores/dataStore';
@@ -14,12 +15,12 @@ export default class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      cycles: []
     }
   }
 
   componentWillMount() {
-    dataActions.getCycles();
+    dataActions.getCycles()
   }
 
   componentDidMount() {
@@ -34,11 +35,19 @@ export default class Carousel extends React.Component {
       return <Header />
     }
 
+    const cycles = _.groupBy(dataStore.getCycles(), 'collection')
+    const collections = _.keys(cycles)
+
     return (
         <main>
           <Header title="" />
           <div className="content">
-            {/* {dataStore.collections.forEach(coll => <Collection collection={coll} />)} */}
+            {collections.map(collection =>
+               <div key={collection}>
+                  <h1>{collection}</h1>
+                  <Collection cycles={cycles[collection]} />
+               </div>
+            )}
           </div>
         </main>
     )

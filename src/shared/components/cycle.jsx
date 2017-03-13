@@ -6,9 +6,20 @@ import Progress from './progress';
  * Component showing progress bar for a single collection cycle
  * @type {Observer}
  */
-export default observer(({cycle}) => (<div>
-  <Progress pct={cycle.percentage} />
-  <details>
-    ...cycle details here...
-  </details>
-</div>));
+export default observer(({cycle}) => {
+  return (
+      <div>
+        <Progress pct={cycle.metadata.progress} />
+        <details>
+           <summary>Metadata</summary>
+           <ul>
+              <li>Errors: {cycle.metadata.errors}</li>
+              <li>Completed: {cycle.metadata.completed}</li>
+              <li>Total: {cycle.metadata.total}</li>
+              <li>Current UUID: {cycle.metadata.currentUuid}</li>
+              <li>Type: {cycle.type}</li>
+           </ul>
+        </details>
+      </div>
+  )
+});

@@ -74,7 +74,8 @@ module.exports = {
     }),
     new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: true, comments:false}),
     new webpack.EnvironmentPlugin([
-      'CAROUSEL_API_URL'
+      'CAROUSEL_API_URL',
+      'NODE_ENV'
     ])
   ]
 };
