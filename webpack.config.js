@@ -40,29 +40,29 @@ module.exports = {
       }
     ],
     rules: [
-        {
-          test: /\.css$|\.scss$/,
-          loader: ExtractTextPlugin.extract({
-            fallback: "style-loader",
-            use: [
-              { loader: 'css-loader' },
-              { loader: 'postcss-loader' },
-              { loader: 'sass-loader', options: {
-                includePaths: [
-                  'node_modules/bulma'
-                ]
-              } }
-            ]
-          })
-        },
-        {
-           test: /\.(js|jsx)$/,
-           exclude: /node_modules/,
-           use: [
-             'babel-loader'
-           ]
-       }
-      ]
+      {
+        test: /\.css$|\.scss$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            { loader: 'css-loader' },
+            { loader: 'postcss-loader' },
+            { loader: 'sass-loader', options: {
+              includePaths: [
+                'node_modules/bulma'
+              ]
+            } }
+          ]
+        })
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: [
+          'babel-loader'
+        ]
+      }
+    ]
   },
   plugins: [
     new ExtractTextPlugin('../styles/[name].main.css'),
@@ -73,7 +73,7 @@ module.exports = {
     }),
     new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: true, comments:false}),
     new webpack.EnvironmentPlugin([
-        'CAROUSEL_API_URL'
+      'CAROUSEL_API_URL'
     ])
   ]
 };
