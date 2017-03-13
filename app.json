@@ -1,0 +1,19 @@
+{
+  "name": "publish-carousel-ui",
+  "description": "",
+  "scripts": {
+  },
+  "env": {
+    "CAROUSEL_API_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
