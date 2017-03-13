@@ -45,13 +45,14 @@ module.exports = {
         loader: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: [
-              { loader: 'css-loader' },
-              { loader: 'postcss-loader' },
+            { loader: 'css-loader' },
+            { loader: 'postcss-loader' },
             { loader: 'sass-loader', options: {
               includePaths: [
-                'node_modules/bulma'
+                'node_modules'
               ]
-            } }
+            }
+            }
           ]
         })
       },

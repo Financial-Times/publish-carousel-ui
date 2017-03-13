@@ -20,11 +20,15 @@
 //     color: black;
 //   }
 // }
+//
 
+@import 'party-parrot-sass/main';
 .headroom-wrapper {
   background-color: black;
   color: white;
-
+  &:hover {
+    @include parrot($speed: 5s);
+  }
   h1 {
     font-size: 2em;
     padding: .5em;

@@ -58,6 +58,7 @@
     "moment": "^2.17.1",
     "nightwatch": "^0.9.12",
     "node-sass": "^4.5.0",
+    "party-parrot-sass": "^1.0.3",
     "postcss-loader": "^1.2.2",
     "pre-commit": "^1.2.2",
     "react": "^0.14.6",

@@ -38,7 +38,7 @@ export default class Carousel extends React.Component {
         <main>
           <Header title="" />
           <div className="content">
-            {dataStore.collections.forEach(coll => <Collection collection={coll} />)}
+            {/* {dataStore.collections.forEach(coll => <Collection collection={coll} />)} */}
           </div>
         </main>
     )
