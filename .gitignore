@@ -9,3 +9,4 @@ test/nightwatch/*.txt
 test/nightwatch/report
 test/nightwatch/screenshots
 .DS_Store
+/rice-box.go
