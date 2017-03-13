@@ -29,7 +29,7 @@ export default class Metadata extends React.Component {
     }
 
     filterData(id, data) {
-
+      
     }
 
     render() {
