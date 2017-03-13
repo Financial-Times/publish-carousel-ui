@@ -10,38 +10,38 @@ import Header from '../components/header';
 
 @observer
 export default class Metadata extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
-
-    componentWillMount() {
-      dataActions.populateMetaData();
-    }
-
-    componentDidMount() {
+  constructor(props) {
+    super(props);
+    this.state = {
 
     }
+  }
 
-    componentWillUnmount() {
+  componentWillMount() {
+    dataActions.populateMetaData();
+  }
+
+  componentDidMount() {
+
+  }
+
+  componentWillUnmount() {
+  }
+
+  filterData(id, data) {
+
+  }
+
+  render() {
+    if(dataStore.isLoading()){
+      return <Header />
     }
 
-    filterData(id, data) {
-      
-    }
 
-    render() {
-      if(dataStore.isLoading()){
-        return <Header />
-      }
-
-
-      return (
+    return (
         <div>
           <Header title="Articles published with an Author, Primary Theme, Section or All three in the last 24 hours" />
         </div>
-      )
-    }
+    )
+  }
 }
