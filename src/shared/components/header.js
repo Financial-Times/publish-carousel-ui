@@ -8,13 +8,12 @@ export default class NavBar extends React.Component {
   }
 
   render() {
-
-    const title = this.props.title !== undefined ? `- ${this.props.title}` : '';
+    const title = this.props.title !== undefined ? `${this.props.title}` : '';
 
     return (
       <div className="clearfix header">
         <Link to="/">
-          <h1>Lantern {title}</h1>
+          <h1>UPP Carousel {title}</h1>
         </Link>
       </div>
     );
