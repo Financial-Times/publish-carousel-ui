@@ -34,9 +34,10 @@ export default class Carousel extends React.Component {
     }
 
     return (
-        <div>
+        <main>
           <Header title="" />
-        </div>
+          <div className=""></div>
+        </main>
     )
   }
 }
