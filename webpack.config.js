@@ -16,8 +16,8 @@ module.exports = {
     ]
   },
   output: {
-    filename: '[name].bundle.js',
-    path: buildPath + '/script',
+    filename: 'script/[name].bundle.js',
+    path: buildPath,
     publicPath: '/'
   },
   resolve: {
@@ -66,10 +66,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('../styles/[name].main.css'),
+    new ExtractTextPlugin('styles/[name].main.css'),
     new HtmlWebpackPlugin({
-      title: 'My App',
-      filename: '../index.html',
+      title: 'UPP Carousel',
+      filename: 'index.html',
       template:'client/index.html'
     }),
     new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: true, comments:false}),
