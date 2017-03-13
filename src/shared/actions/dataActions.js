@@ -1,41 +1,29 @@
-import { action } from 'mobx';
+import {action} from 'mobx';
 import dataStore from '../stores/dataStore';
 import request from 'superagent';
 
+const CAROUSEL_API_URL = process.env.CAROUSEL_API_URL;
+
 class DataActions {
-  constructor(){
-  }
+    constructor() {}
 
-  @action populateMetaData() {
-    dataStore.loading = true;
+    @action getCycles() {
+        dataStore.loading = true;
 
-    let a = this.callAPI('24h', '28d');
-    let b = this.callAPI('1h', '1d');
-    return Promise.all([a, b]).then(values => {
-      let data = {
-        month: values[0],
-        day: values[1]
-      }
-      dataStore.data = data;
-      dataStore.loading = false;
-    })
-  }
-
-  callAPI (interval, timespan) {
-    const CAROUSEL_API_URL = process.env.CAROUSEL_API_URL;
-
-    return new Promise((resolve, reject) => {
-      request
-         .get(`${CAROUSEL_API_URL}?timespan=${timespan}&interval=${interval}`)
-         .end(function(err, res){
-           if (err || !res.ok) {
-             reject(res.toError());
-           } else {
-             resolve(res.body);
-           }
-      });
-    })
-  }
+        request
+           .get(`${CAROUSEL_API_URL}/cycles`)
+           .end(function(err, res) {
+                if (err || !res.ok) {
+                    reject(res.toError());
+                } else {
+                   let data = {
+                       cycles: value
+                   }
+                   dataStore.data = data;
+                   dataStore.loading = false;
+                }
+           });
+    }
 }
 
 export default new DataActions;
