@@ -9,7 +9,7 @@ import dataStore from '../stores/dataStore';
 import Header from '../components/header';
 
 @observer
-export default class Metadata extends React.Component {
+export default class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +18,7 @@ export default class Metadata extends React.Component {
   }
 
   componentWillMount() {
-    dataActions.populateMetaData();
+    dataActions.getCycles();
   }
 
   componentDidMount() {
@@ -28,19 +28,14 @@ export default class Metadata extends React.Component {
   componentWillUnmount() {
   }
 
-  filterData(id, data) {
-
-  }
-
   render() {
     if(dataStore.isLoading()){
       return <Header />
     }
 
-
     return (
         <div>
-          <Header title="Articles published with an Author, Primary Theme, Section or All three in the last 24 hours" />
+          <Header title="" />
         </div>
     )
   }

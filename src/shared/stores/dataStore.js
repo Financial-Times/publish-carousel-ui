@@ -1,4 +1,4 @@
-import metaDataFixtures from '../fixtures/metadata.fixture';
+import cyclesData from '../fixtures/cycles.fixture';
 import { observable } from "mobx";
 
 class DataStore {
@@ -15,7 +15,7 @@ class DataStore {
   }
 
   getCycles() {
-    return (process.env.NODE_ENV === 'test') ? metaDataFixtures : this.cycles;
+    return (process.env.NODE_ENV === 'test') ? cyclesData : this.cycles;
   }
 }
 
