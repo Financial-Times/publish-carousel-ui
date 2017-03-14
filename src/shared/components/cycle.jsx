@@ -9,7 +9,7 @@ import Button from './button';
 export default observer(({cycle}) => {
   return (
       <div className="cycle">
-        <Progress pct={cycle.metadata.progress * 100} />
+        <Progress percentage={cycle.metadata.progress * 100} />
         <details>
           <summary>Metadata</summary>
           <ul>
