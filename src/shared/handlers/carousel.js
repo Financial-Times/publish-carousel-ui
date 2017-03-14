@@ -4,7 +4,6 @@ import _ from 'lodash';
 
 import {observer} from 'mobx-react';
 
-import dataActions from '../actions/dataActions';
 import dataStore from '../stores/dataStore';
 
 import Header from '../components/header';
@@ -13,31 +12,13 @@ import Button from '../components/button';
 
 @observer
 export default class Carousel extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cycles: []
-    }
-  }
-
-  componentWillMount() {
-    dataActions.getCycles()
-  }
-
-  componentDidMount() {
-
-  }
-
-  componentWillUnmount() {
-  }
-
   render() {
     if(dataStore.isLoading()){
       return <Header />
     }
 
-    const cycles = _.groupBy(dataStore.getCycles(), 'collection')
-    const collections = _.keys(cycles)
+    const cycles = _.groupBy(this.props.cycles, 'collection');
+    const collections = _.keys(this.props.cycles);
 
     return (
         <main>

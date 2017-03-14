@@ -7,9 +7,12 @@ import {observer} from "mobx-react";
  * @return {string}             HTML progress bar
  */
 export default observer(({percentage}) => (
-  <progress
+  <progress max="100"
+    value="{percentage}"
     className="progress is-primary is-large"
-    value={percentage}
-    max="100"
-  >{percentage}%</progress>
+  >
+    <div className="progress is-primary is-large">
+      <span style={`width: ${percentage}`}>{percentage}%</span>
+    </div>
+  </progress>
 ));
