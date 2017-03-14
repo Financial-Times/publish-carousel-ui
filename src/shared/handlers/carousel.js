@@ -1,14 +1,10 @@
 import React from "react";
-
 import _ from 'lodash';
-
 import {observer} from 'mobx-react';
-
 import dataStore from '../stores/dataStore';
-
 import Header from '../components/header';
-import Collection from '../components/collection';
 import Button from '../components/button';
+import Collection from '../components/collection';
 
 @observer
 export default class Carousel extends React.Component {
@@ -19,7 +15,6 @@ export default class Carousel extends React.Component {
 
     const cycles = _.groupBy(this.props.cycles, 'collection');
     const collections = _.keys(this.props.cycles);
-
     return (
         <main>
           <Header title="" />
@@ -39,26 +34,22 @@ export default class Carousel extends React.Component {
                     <Collection cycles={cycles[collection]} />
                   </div>
                 </div>
-                <footer className="card-footer">
-                  <Button
-                    className={["card-footer-item"]}
-                    type="pause"
-                    cycle={cycles[collection]}
-                    all
-                  >
-                    Pause all&nbsp;{collection}
-                  </Button>
-                  <Button
-                    className={["card-footer-item"]}
-                    type="stop"
-                    cycle={cycles[collection]}
-                    all
-                  >
-                    Stop all&nbsp;{collection}
-                  </Button>
-                </footer>
               </div>
             )}
+          </div>
+          <div className={"modal " + (dataStore.isModalOpen ? 'is-active' : '')}>
+            <div className="modal-background" />
+            <div className="modal-content">
+              Are you <strong>SURE</strong> you want to do this? <br />
+              <Button type="reset"
+                className={["is-large"]}
+              >
+                YES I AM TOTALLY AWARE OF WHAT I AM DOING
+              </Button>
+            </div>
+            <button className="modal-close"
+              onClick={dataStore.handleModalClose}
+            />
           </div>
         </main>)
   }

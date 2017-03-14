@@ -21,23 +21,25 @@ export default observer(({cycle}) => {
             <li>Type: {cycle.type}</li>
           </ul>
         </details>
-        <div className="button-container control is-grouped">
-          <p className="control">
-            <Button
-              type="pause"
-              cycle={cycle}
-            >
-              Pause&nbsp;{cycle.name}
-            </Button>
-          </p>
-          <p className="control">
-            <Button
-              type="stop"
-              cycle={cycle}
-            >
-              Stop&nbsp;{cycle.name}
-            </Button>
-          </p>
+        <div className="control has-addons">
+          <Button
+            type="start"
+            id={cycle.id}
+          >
+            Start
+          </Button>
+          <Button
+            type="stop"
+            id={cycle.id}
+          >
+            Stop
+          </Button>
+          <Button
+            type="reset"
+            id={cycle.id}
+          >
+            Reset
+          </Button>
         </div>
       </div>
   )

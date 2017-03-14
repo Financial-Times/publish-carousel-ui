@@ -5,6 +5,7 @@ class DataStore {
   @observable cycles = [];
   @observable alert = null;
   @observable loading = false;
+  @observable isModalOpen = false;
 
   isLoading() {
     return this.loading;
@@ -16,6 +17,19 @@ class DataStore {
 
   getCycles() {
     return (process.env.NODE_ENV === 'test') ? cyclesData : this.cycles;
+  }
+
+  // Should these be here?
+  toggleModal() {
+    return !this.isModalOpen;
+  }
+
+  handleModalOpen() {
+    return this.isModalOpen = true;
+  }
+
+  handleModalCloe() {
+    return this.isModalOpen = false;
   }
 }
 

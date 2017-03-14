@@ -17,6 +17,14 @@ class DataActions {
     });
   }
 
+  @action startPolling(interval) {
+    this.intId = window.setInterval(this.getCycles, interval);
+  }
+
+  @action stopPolling() {
+    window.cancelInterval(this.intId);
+  }
+
   @action getCycles() {
     dataStore.loading = true;
 
@@ -32,15 +40,8 @@ class DataActions {
     });
   }
 
-  @action startPolling(interval) {
-    this.intId = window.setInterval(this.getCycles, interval);
-  }
-
-  @action stopPolling() {
-    window.cancelInterval(this.intId);
-  }
-
-  @action stopCycle(id) {
+  @action stopCycle(id, isDisabled = true) {
+    if (isDisabled) return;
     request
     .post(`/cycles/${id}/stop`)
     .end(function(err, res) {
@@ -50,7 +51,8 @@ class DataActions {
     });
   }
 
-  @action resetCycle(id) {
+  @action resetCycle(id, isDisabled = true) {
+    if (isDisabled) return;
     request
     .post(`/cycles/${id}/reset`)
     .end(function(err, res) {
@@ -60,7 +62,8 @@ class DataActions {
     });
   }
 
-  @action resumeCycle(id) {
+  @action resumeCycle(id, isDisabled = true) {
+    if (isDisabled) return;
     request
     .post(`/cycles/${id}/resume`)
     .end(function(err, res) {
