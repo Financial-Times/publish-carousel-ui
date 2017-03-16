@@ -1,4 +1,3 @@
-import cyclesData from '../fixtures/cycles.fixture';
 import { observable } from "mobx";
 
 class DataStore {
@@ -13,10 +12,6 @@ class DataStore {
 
   getAlert() {
     return this.alert;
-  }
-
-  getCycles() {
-    return (process.env.NODE_ENV === 'test') ? cyclesData : this.cycles;
   }
 
   // Should these be here?

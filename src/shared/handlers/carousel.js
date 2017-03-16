@@ -1,6 +1,7 @@
 import React from "react";
 import _ from 'lodash';
 import {observer} from 'mobx-react';
+
 import dataStore from '../stores/dataStore';
 import Header from '../components/header';
 import Button from '../components/button';
@@ -15,9 +16,12 @@ export default class Carousel extends React.Component {
 
     const cycles = _.groupBy(this.props.cycles, 'collection');
     const collections = _.keys(this.props.cycles);
+    console.log(this.props.cycles)
+
     return (
         <main>
           <Header title="" />
+
           <div className="content">
             {collections.map(collection =>
               <div
@@ -37,6 +41,7 @@ export default class Carousel extends React.Component {
               </div>
             )}
           </div>
+
           <div className={"modal " + (dataStore.isModalOpen ? 'is-active' : '')}>
             <div className="modal-background" />
             <div className="modal-content">
