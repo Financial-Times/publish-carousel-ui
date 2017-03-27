@@ -5,26 +5,23 @@ import dataActions from '../actions/dataActions';
 // N.b., I'm not sure whether using an array for classes is the best idea here...
 
 export default observer(({type, id, children, status, className}) => {
-  if (!className) className = [];
-  className.push('button');
+  if (!className) className = ['button', 'is-small'];
+
   let action;
   let disabled;
+
   switch(type) {
   case 'start':
-    className.push('is-success');
-    disabled = status === 'running';
+    disabled = status !== 'running';
     action = id ? dataActions.resumeCycle.bind(undefined, id, disabled) : dataActions.startCarousel;
     break;
   case 'stop':
-    className.push('is-warning');
-    disabled = status !== 'running';
+    disabled = status === 'running';
     action = id ? dataActions.stopCycle.bind(undefined, id, disabled) : false;
     break;
   case 'reset':
-    className.push('is-danger');
-    disabled = status !== 'running';
+    disabled = status === 'running';
     action = id ? dataActions.resetCycle.bind(undefined, id, disabled) : dataActions.shutdownCarousel
-
     break;
   }
 

@@ -2,6 +2,7 @@ import { observable } from "mobx";
 
 class DataStore {
   @observable cycles = [];
+
   @observable alert = null;
   @observable loading = false;
   @observable isModalOpen = false;

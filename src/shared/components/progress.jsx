@@ -8,11 +8,11 @@ import {observer} from "mobx-react";
  */
 export default observer(({percentage}) => (
   <progress max="100"
-    value="{percentage}"
-    className="progress is-primary is-large"
+    value={percentage}
+    className="progress is-primary"
   >
-    <div className="progress is-primary is-large">
-      <span style={`width: ${percentage}`}>{percentage}%</span>
+    <div className="progress is-primary">
+      <span style={{width: percentage}}>{percentage}%</span>
     </div>
   </progress>
 ));

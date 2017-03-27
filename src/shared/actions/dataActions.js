@@ -35,7 +35,10 @@ class DataActions {
     dataStore.loading = true;
 
     if(process.env.NODE_ENV === 'test') {
-      dataStore.cycles.replace(cyclesData);
+      dataStore.cycles.clear();
+      cyclesData.map((cycle) => {
+         dataStore.cycles.push(cycle);
+      })
       return
     }
 
@@ -43,10 +46,15 @@ class DataActions {
       .get(`cycles`)
       .end(function(err, res) {
         dataStore.loading = false;
+        console.log(res.body);
+
         if (err || !res.ok) {
           dataStore.alert = 'Failed to retrieve cycles from the carousel!';
         } else {
-          dataStore.cycles.replace(res.body);
+          dataStore.cycles.clear();
+          res.body.map((cycle) => {
+             dataStore.cycles.push(cycle);
+          })
         }
       });
   }

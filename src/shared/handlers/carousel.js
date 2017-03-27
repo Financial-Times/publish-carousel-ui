@@ -3,20 +3,17 @@ import _ from 'lodash';
 import {observer} from 'mobx-react';
 
 import dataStore from '../stores/dataStore';
+
 import Header from '../components/header';
 import Button from '../components/button';
 import Collection from '../components/collection';
 
 @observer
 export default class Carousel extends React.Component {
-  render() {
-    if(dataStore.isLoading()){
-      return <Header />
-    }
 
+  render() {
     const cycles = _.groupBy(this.props.cycles, 'collection');
-    const collections = _.keys(this.props.cycles);
-    console.log(this.props.cycles)
+    const collections = _.keys(cycles);
 
     return (
         <main>
@@ -24,21 +21,18 @@ export default class Carousel extends React.Component {
 
           <div className="content">
             {collections.map(collection =>
-              <div
-                className="card"
-                key={collection}
-              >
-                <header className="card-header">
-                  <p className="card-header-title">
-                    {collection}
-                  </p>
-                </header>
-                <div className="card-content">
-                  <div className="content">
-                    <Collection cycles={cycles[collection]} />
-                  </div>
-                </div>
-              </div>
+                  <div className="collection card" key={collection}>
+                        <header className="card-header">
+                           <p className="card-header-title">
+                              {collection.toUpperCase()}
+                           </p>
+                        </header>
+                        <div className="card-content">
+                           <div className="content">
+                              <Collection cycles={cycles[collection]} />
+                           </div>
+                        </div>
+                     </div>
             )}
           </div>
 
@@ -55,7 +49,7 @@ export default class Carousel extends React.Component {
             <button className="modal-close"
               onClick={dataStore.handleModalClose}
             />
-          </div>
+         </div>
         </main>)
   }
 }
