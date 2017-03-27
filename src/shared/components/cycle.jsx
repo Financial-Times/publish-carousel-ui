@@ -33,9 +33,9 @@ export default class Cycle extends React.Component {
 
             <div className="level-right">
                <div className="level-item control buttons">
-                  <Button type="start" id={cycle.id}>Start</Button>
-                  <Button type="stop"  id={cycle.id}>Stop</Button>
-                  <Button type="reset" id={cycle.id}>Reset</Button>
+                  <Button type="start" states={cycle.metadata.state} id={cycle.id}>Start</Button>
+                  <Button type="stop"  states={cycle.metadata.state} id={cycle.id}>Stop</Button>
+                  <Button type="reset" states={cycle.metadata.state} id={cycle.id}>Reset</Button>
                </div>
             </div>
          </div>
@@ -55,6 +55,10 @@ export default class Cycle extends React.Component {
              <li className={this.selectedTab === 'statistics' ? 'is-active' : undefined}><a onClick={() => this.selectTab('statistics')}>Statistics</a></li>
              <li className={this.selectedTab === 'id' ? 'is-active' : undefined}><a onClick={() => this.selectTab('id')}>ID</a></li>
              <li className={this.selectedTab === 'origin' ? 'is-active' : undefined}><a onClick={() => this.selectTab('origin')}>Origin</a></li>
+             { cycle.metadata.state.indexOf('running') > -1 ?
+                <li className={this.selectedTab === 'current' ? 'is-active' : undefined}><a onClick={() => this.selectTab('current')}>Current Publish</a></li>
+                : undefined
+             }
            </ul>
          </div>
 
@@ -114,6 +118,16 @@ export default class Cycle extends React.Component {
                      <div>
                         <p className="heading">Collection</p>
                         <p className="title">{cycle.collection}</p>
+                     </div>
+                  </div>
+               </nav> : undefined}
+
+            {this.selectedTab === 'current' ?
+               <nav className="level">
+                  <div className="level-item has-text-centered">
+                     <div>
+                        <p className="heading">UUID</p>
+                        <p className="title">{cycle.metadata.currentUuid}</p>
                      </div>
                   </div>
                </nav> : undefined}
