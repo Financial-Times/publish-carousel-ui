@@ -1,6 +1,8 @@
 import React from "react";
 import {observable, action} from 'mobx';
 import {observer} from "mobx-react";
+import moment from "moment";
+
 import Progress from './progress';
 import Button from './button';
 
@@ -57,6 +59,16 @@ export default class Cycle extends React.Component {
              <li className={this.selectedTab === 'origin' ? 'is-active' : undefined}><a onClick={() => this.selectTab('origin')}>Origin</a></li>
              { cycle.metadata.state.indexOf('running') > -1 ?
                 <li className={this.selectedTab === 'current' ? 'is-active' : undefined}><a onClick={() => this.selectTab('current')}>Current Publish</a></li>
+                : undefined
+             }
+             {
+                cycle.type === 'ScalingWindow' ?
+                <li className={this.selectedTab === 'window' ? 'is-active' : undefined}><a onClick={() => this.selectTab('window')}>Time Window</a></li>
+                : undefined
+             }
+             {
+                cycle.type === 'ScalingWindow' ?
+                <li className={this.selectedTab === 'throttle' ? 'is-active' : undefined}><a onClick={() => this.selectTab('throttle')}>Throttle</a></li>
                 : undefined
              }
            </ul>
@@ -132,6 +144,43 @@ export default class Cycle extends React.Component {
                   </div>
                </nav> : undefined}
 
+            {this.selectedTab === 'window' && cycle.type === 'ScalingWindow' ?
+               <nav className="level">
+                  <div className="level-item has-text-centered">
+                     <div>
+                        <p className="heading">Window</p>
+                        <p className="title">{cycle.timeWindow}</p>
+                     </div>
+                  </div>
+                  <div className="level-item has-text-centered">
+                     <div>
+                        <p className="heading">Time Start</p>
+                        <p className="title">{moment(cycle.metadata.windowStart).format('HH:mm:ss')}</p>
+                     </div>
+                  </div>
+                  <div className="level-item has-text-centered">
+                     <div>
+                        <p className="heading">Time End</p>
+                        <p className="title">{moment(cycle.metadata.windowEnd).format('HH:mm:ss')}</p>
+                     </div>
+                  </div>
+               </nav> : undefined}
+
+            {this.selectedTab === 'throttle' && cycle.type === 'ScalingWindow' ?
+               <nav className="level">
+                  <div className="level-item has-text-centered">
+                     <div>
+                        <p className="heading">Minimum Throttle</p>
+                        <p className="title">{cycle.minimumThrottle}</p>
+                     </div>
+                  </div>
+                  <div className="level-item has-text-centered">
+                     <div>
+                        <p className="heading">Maximum Throttle</p>
+                        <p className="title">{cycle.maximumThrottle}</p>
+                     </div>
+                  </div>
+               </nav> : undefined}
 
       </div>
     )
