@@ -139,7 +139,7 @@ export default class Cycle extends React.Component {
                   <div className="level-item has-text-centered">
                      <div>
                         <p className="heading">UUID</p>
-                        <p className="title">{cycle.metadata.currentUuid}</p>
+                        <p className="title">{cycle.metadata.currentPublishUuid}</p>
                      </div>
                   </div>
                </nav> : undefined}
