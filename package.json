@@ -58,7 +58,7 @@
     "express": "^4.14.1",
     "extract-text-webpack-plugin": "^2.0.0-beta",
     "html-webpack-plugin": "^2.28.0",
-    "jest-cli": "^18.1.0",
+    "jest-cli": "^25.1.0",
     "mobx": "^3.1.0",
     "mobx-react": "^4.1.0",
     "moment": "^2.17.1",
@@ -78,7 +78,7 @@
     "style-loader": "^0.13.1",
     "superagent": "^3.4.4",
     "victory": "^0.17.0",
-    "webpack": "^2.2.1",
+    "webpack": "^4.0.0",
     "webpack-dev-server": "^1.16.2",
     "webpack-hot-middleware": "^2.16.1"
   }
